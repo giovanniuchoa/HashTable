@@ -50,15 +50,22 @@ public class TabelaHash<C, V> {
     }
 
     public V buscar(C chave) {
+        long startTime = System.currentTimeMillis(); // Registra o tempo no início da função
+        
         int indice = calcularHash(chave);
         if (tabela[indice] != null) {
             for (Valores<C, V> Valores : tabela[indice]) {
                 if (Valores.getChave().equals(chave)) {
+                    long endTime = System.currentTimeMillis(); // Registra o tempo no final da função
+                    long executionTime = endTime - startTime; // Calcula o tempo de execução
+                    System.out.println("Tempo de execução: " + executionTime + " milissegundos");
                     return Valores.getValor();
                 }
             }
         }
-        System.out.println("Chave não encontrada");
+        long endTime = System.currentTimeMillis(); // Registra o tempo no final da função
+        long executionTime = endTime - startTime; // Calcula o tempo de execução
+        System.out.println("Chave não encontrada. Tempo de execução: " + executionTime + " milissegundos");
         return null;
     }
 
