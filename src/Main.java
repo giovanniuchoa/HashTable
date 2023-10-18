@@ -1,27 +1,18 @@
 public class Main {
     public static void main(String[] args) {
-        HashTable<Integer, String> hashTable = new HashTable<>(16, 0.75);
+        TabelaHash<Integer, Integer> tabela = new TabelaHash<>();
 
-        // Inserção
-        hashTable.put(1, "Joao");
-        System.out.println("Insere (1) - " + hashTable.get(1));
-        hashTable.put(2, "Giovanni");
-        System.out.println("Insere (2) - " + hashTable.get(2));
-        hashTable.put(3, "Terezin");
-        System.out.println("Insere (3) - " + hashTable.get(3));
+        // Inserção de elementos
+        tabela.inserir(1, 25);
+        tabela.inserir(2, 30);
+        tabela.imprimirTabela();
 
-        // Busca
-        System.out.println("Busca (2): " + hashTable.get(2)); 
 
-        // Remoção
-        System.out.println("Removido (1): " + hashTable.remove(1)); 
+        tabela.inserir(3, 22);
+        tabela.inserir(9, 30);
+         tabela.imprimirTabela();
 
-        // Teste de eficiência
-        long startTime = System.nanoTime();
-        for (int i = 0; i < 10000; i++) {
-            hashTable.put(i, "Value" + i);
-        }
-        long endTime = System.nanoTime();
-        System.out.println("Tempo de inserção dos elementos: " + (endTime - startTime) / 1e9 + " segundos");
+        
     }
+    
 }
